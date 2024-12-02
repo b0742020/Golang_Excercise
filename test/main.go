@@ -4,13 +4,38 @@ import "fmt"
 
 func main() {
 	x1 := []int{102, 255, 365, 455, 588}
-	for k, v := range x1 {
-		fmt.Printf("Index: %d, Value: %d\n", k, v)
+	fmt.Println(x1)
+	x1 = append(x1[:2], x1[3:]...)
+	fmt.Println(x1)
+
+	am := map[string]int{
+		"Gibson": 24,
+		"Pee":    20,
 	}
-	/*for i := 0; i < 10; i++ {
-		fmt.Println("--")
-		for j := 0; j < 10; j++ {
-			fmt.Printf("Outer loop: %d, Inner loop: %d\n", i, j)
-		}
-	}*/
+	fmt.Println(am)
+	fmt.Println("The age of Gibson is", am["Gibson"])
+
+	an := make(map[string]int)
+	an["John"] = 25
+	an["Mary"] = 22
+	fmt.Println(an)
+
+	for k, v := range am {
+		fmt.Println(k, v)
+	}
+	for _, v := range an {
+		fmt.Println(v)
+	}
+	fmt.Println("----------")
+	delete(an, "John")
+	fmt.Println(an)
+	fmt.Println(an["John"])
+
+	fmt.Println("----------")
+	v, ok := am["Gibson"]
+	if ok {
+		fmt.Println(v)
+	} else {
+		fmt.Println("Key not found")
+	}
 }
