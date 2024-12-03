@@ -2,25 +2,23 @@ package main
 
 import (
 	"fmt"
-
-	"math/rand"
 )
+
+type person struct {
+	first string
+	age   int
+}
 
 func init() {
 	fmt.Println("Initializing the program")
 }
 
+func (p person) speak() {
+	fmt.Printf("My name is  %s\n", p.first)
+	fmt.Printf("I am %d years old\n", p.age)
+}
+
 func main() {
-	x := rand.Intn(250)
-	fmt.Println("Random number generated is:", x)
-	switch {
-	case x <= 100:
-		fmt.Println("x is less than or equal to 100")
-	case x >= 101 && x <= 200:
-		fmt.Println("between 101 and 200")
-	case x >= 201 && x <= 250:
-		fmt.Println("between 201 and 250")
-	default:
-		fmt.Println("x is greater than 250")
-	}
+	p1 := person{"John", 25}
+	p1.speak()
 }

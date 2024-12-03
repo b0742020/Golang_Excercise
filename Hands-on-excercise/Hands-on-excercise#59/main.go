@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-
-	"math/rand"
 )
 
 func init() {
@@ -11,16 +9,22 @@ func init() {
 }
 
 func main() {
-	x := rand.Intn(250)
-	fmt.Println("Random number generated is:", x)
-	switch {
-	case x <= 100:
-		fmt.Println("x is less than or equal to 100")
-	case x >= 101 && x <= 200:
-		fmt.Println("between 101 and 200")
-	case x >= 201 && x <= 250:
-		fmt.Println("between 201 and 250")
-	default:
-		fmt.Println("x is greater than 250")
+	xi := []int{1, 2, 3, 4, 5}
+	fmt.Println(foo(xi...))
+	fmt.Println(bar(xi))
+}
+
+func foo(nums ...int) int {
+	t := 0
+	for _, v := range nums {
+		t += v
 	}
+	return t
+}
+func bar(nums []int) int {
+	t := 0
+	for _, v := range nums {
+		t += v
+	}
+	return t
 }

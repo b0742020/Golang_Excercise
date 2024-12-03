@@ -2,25 +2,43 @@ package main
 
 import (
 	"fmt"
-
-	"math/rand"
+	"math"
 )
 
+type square struct {
+	length float64
+	width  float64
+}
+type circle struct {
+	radius float64
+}
+
+type shape interface {
+	area() float64
+}
+
+func (s square) area() float64 {
+	return s.length * s.width
+}
+func (c circle) area() float64 {
+	return math.Pi * math.Pow(c.radius, 2)
+}
+
+func info(s shape) float64 {
+	return s.area()
+}
 func init() {
 	fmt.Println("Initializing the program")
 }
 
 func main() {
-	x := rand.Intn(250)
-	fmt.Println("Random number generated is:", x)
-	switch {
-	case x <= 100:
-		fmt.Println("x is less than or equal to 100")
-	case x >= 101 && x <= 200:
-		fmt.Println("between 101 and 200")
-	case x >= 201 && x <= 250:
-		fmt.Println("between 201 and 250")
-	default:
-		fmt.Println("x is greater than 250")
+	c1 := circle{
+		radius: 5,
 	}
+	s1 := square{
+		length: 10,
+		width:  5,
+	}
+	fmt.Println("Area of square is:", info(s1))
+	fmt.Println("Area of circle is:", info(c1))
 }
