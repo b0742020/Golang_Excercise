@@ -2,40 +2,57 @@ package main
 
 import "fmt"
 
+type ListNode struct{
+	Val  int
+	Next *ListNode
+}
+
+type person struct {
+	fist string
+}
+
+type secretAgent struct {
+	person
+	ltk bool
+}
+type human interface {
+	speak()
+}
+func (head *ListNode,val int)*LisListNode{
+	dummy := &ListNode{}
+	dummy.Next = head
+	cur :=
+}
+func (p person) speak() {
+	fmt.Println("I am", p.fist)
+}
+
+func (sa secretAgent) speak() {
+	fmt.Println("I'm a secret agent", sa.fist)
+}
+
+func saySomething(h human) {
+	h.speak()
+}
+
 func main() {
-	x1 := []int{102, 255, 365, 455, 588}
-	fmt.Println(x1)
-	x1 = append(x1[:2], x1[3:]...)
-	fmt.Println(x1)
-
-	am := map[string]int{
-		"Gibson": 24,
-		"Pee":    20,
+	sa1 := secretAgent{
+		person: person{
+			fist: "John",
+		},
+		ltk: true,
 	}
-	fmt.Println(am)
-	fmt.Println("The age of Gibson is", am["Gibson"])
-
-	an := make(map[string]int)
-	an["John"] = 25
-	an["Mary"] = 22
-	fmt.Println(an)
-
-	for k, v := range am {
-		fmt.Println(k, v)
+	p1 := person{
+		fist: "John",
 	}
-	for _, v := range an {
-		fmt.Println(v)
+	p2 := person{
+		fist: "Jenny",
 	}
-	fmt.Println("----------")
-	delete(an, "John")
-	fmt.Println(an)
-	fmt.Println(an["John"])
+	// sa1.speak()
+	// p1.speak()
+	// p2.speak()
 
-	fmt.Println("----------")
-	v, ok := am["Gibson"]
-	if ok {
-		fmt.Println(v)
-	} else {
-		fmt.Println("Key not found")
-	}
+	saySomething(sa1)
+	saySomething(p1)
+	saySomething(p2)
 }

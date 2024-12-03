@@ -1,26 +1,37 @@
 package main
 
-import (
-	"fmt"
+import "fmt"
 
-	"math/rand"
-)
-
-func init() {
-	fmt.Println("Initializing the program")
+type engine struct {
+	erletric bool
+}
+type vehicle struct {
+	engine
+	make  string
+	model string
+	door  string
+	color string
 }
 
 func main() {
-	x := rand.Intn(250)
-	fmt.Println("Random number generated is:", x)
-	switch {
-	case x <= 100:
-		fmt.Println("x is less than or equal to 100")
-	case x >= 101 && x <= 200:
-		fmt.Println("between 101 and 200")
-	case x >= 201 && x <= 250:
-		fmt.Println("between 201 and 250")
-	default:
-		fmt.Println("x is greater than 250")
+	car1 := vehicle{
+		engine: engine{
+			erletric: true,
+		},
+		make:  "Toyota",
+		model: "Camry",
+		door:  "4",
+		color: "Red",
 	}
+	fmt.Println(car1)
+	car2 := vehicle{
+		engine: engine{
+			erletric: true,
+		},
+		make:  "Toyota",
+		model: "Supra",
+		door:  "2",
+		color: "Red",
+	}
+	fmt.Println(car2)
 }

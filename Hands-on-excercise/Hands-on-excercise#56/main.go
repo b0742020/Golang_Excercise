@@ -1,26 +1,44 @@
 package main
 
-import (
-	"fmt"
+import "fmt"
 
-	"math/rand"
-)
-
-func init() {
-	fmt.Println("Initializing the program")
+type x struct {
+	first     string
+	friends   map[string]int
+	favDrinks []string
 }
 
 func main() {
-	x := rand.Intn(250)
-	fmt.Println("Random number generated is:", x)
-	switch {
-	case x <= 100:
-		fmt.Println("x is less than or equal to 100")
-	case x >= 101 && x <= 200:
-		fmt.Println("between 101 and 200")
-	case x >= 201 && x <= 250:
-		fmt.Println("between 201 and 250")
-	default:
-		fmt.Println("x is greater than 250")
+	p1 := x{
+		first: "John",
+		friends: map[string]int{
+			"Jane": 25,
+			"Bob":  30,
+		},
+		favDrinks: []string{
+			"Coffee",
+			"Tea",
+			"Water",
+		},
 	}
+	for k, v := range p1.friends {
+		fmt.Println(k, v)
+	}
+	p2 := struct {
+		first     string
+		friends   map[string]int
+		favDrinks []string
+	}{
+		first: "Jane",
+		friends: map[string]int{
+			"John": 35,
+			"Bob":  40,
+		},
+		favDrinks: []string{
+			"Coffee",
+			"Tea",
+			"Milk",
+		},
+	}
+	fmt.Println(p2)
 }
